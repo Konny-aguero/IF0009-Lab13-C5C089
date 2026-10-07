@@ -1,0 +1,7 @@
+.github/
+.vscode/
+**/target/
+**/node_modules/
+**/.angular/
+**/dist/
+*.log
