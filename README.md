@@ -68,8 +68,3 @@ cd medpharm-frontend
 npm run build
 ```
 
-## Entrega pendiente
-
-- Capturar el error 401 en el navegador.
-- Crear el repositorio público `IF0009-Lab13-C5C089` en GitHub y subir el proyecto.
-- Registrar la URL del repositorio en la plataforma del curso.
