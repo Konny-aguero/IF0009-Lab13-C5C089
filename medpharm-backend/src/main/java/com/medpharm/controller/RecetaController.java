@@ -1,6 +1,9 @@
 package com.medpharm.controller;
 
 import com.medpharm.model.RecetaMedica;
+import com.medpharm.dto.RecetaRequestDTO;
+import jakarta.validation.Valid;
+import java.security.Principal;
 import com.medpharm.service.RecetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +35,8 @@ public class RecetaController {
 
     // Registrar una nueva receta (Aquí el Service valida el stock)
     @PostMapping
-    public ResponseEntity<RecetaMedica> createReceta(@RequestBody RecetaMedica recetaMedica) {
-        RecetaMedica nuevaReceta = recetaService.save(recetaMedica);
+    public ResponseEntity<RecetaMedica> createReceta(@Valid @RequestBody RecetaRequestDTO recetaMedica, Principal principal) {
+        RecetaMedica nuevaReceta = recetaService.save(recetaMedica, principal.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaReceta);
     }
 

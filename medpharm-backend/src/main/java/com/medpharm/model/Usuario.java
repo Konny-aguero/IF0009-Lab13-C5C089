@@ -3,7 +3,7 @@ package com.medpharm.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -48,6 +48,7 @@ public class Usuario {
         this.username = username;
     }
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     public String getPassword() {
         return password;
     }

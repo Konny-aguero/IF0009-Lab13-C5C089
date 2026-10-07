@@ -41,6 +41,11 @@ public class SecurityConfig {
             return configuration;
         }))
                 .csrf(csrf -> csrf.disable())
+                .exceptionHandling(errors -> errors.authenticationEntryPoint((request, response, error) -> {
+                    response.setStatus(401);
+                    response.setContentType("application/problem+json");
+                    response.getWriter().write("{\"type\":\"about:blank\",\"title\":\"Unauthorized\",\"status\":401,\"detail\":\"Se requiere un token JWT valido\"}");
+                }))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**").permitAll()
                         .anyRequest().authenticated());
